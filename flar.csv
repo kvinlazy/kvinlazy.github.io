@@ -2,31 +2,31 @@ id,value
 flare,
 flare.analytics,
 flare.analytics.cluster,
-flare.analytics.cluster.Coding,10
-flare.analytics.cluster.Researching,10
-flare.analytics.cluster.Blogging,5
-flare.analytics.cluster.Meetings,8
-flare.analytics.cluster.Presentations,6
+flare.analytics.cluster.Coding,25
+flare.analytics.cluster.Researching,50
+flare.analytics.cluster.Blogging,10
+flare.analytics.cluster.Meetings,75
+flare.analytics.cluster.Presentations,90
 flare.query.optimization,
-flare.query.optimization.Designing,11
-flare.query.optimization.Drafting,12
-flare.query.optimization.Project Management,8
-flare.query.optimization.Monitoring,6
-flare.query.optimization.Planning,5
+flare.query.optimization.Designing,50
+flare.query.optimization.Drafting,20
+flare.query.optimization.Project Management,75
+flare.query.optimization.Monitoring,75
+flare.query.optimization.Planning,75
 flare.query,
-flare.query.Primavera,20
-flare.query.C/C++,15
-flare.query.PHP,18
-flare.query.Latex,15
+flare.query.Primavera,40
+flare.query.C/C++,50
+flare.query.PHP,50
+flare.query.Latex,20
 flare.physics,
-flare.physics.Python,15
-flare.physics.OpenCV,20
-flare.physics.MATLAB,22
+flare.physics.Python,40
+flare.physics.OpenCV,30
+flare.physics.MATLAB,50
 flare.vis.operator.layout,
-flare.vis.operator.layout.Net Micro-Framework,25
-flare.vis.operator.layout..C#,17
-flare.vis.operator.layout..Microsoft Azure,13
-flare.vis.operator.layout..AutoCAD,30
-flare.vis.operator.layout..SolidWorks,18
-flare.vis.operator.layout..Microsoft Projects,14
-flare.vis.operator.layout..Ladder Programming,15
+flare.vis.operator.layout.Net Micro-Framework,60
+flare.vis.operator.layout..C#,60
+flare.vis.operator.layout..Microsoft Azure,60
+flare.vis.operator.layout..AutoCAD,70
+flare.vis.operator.layout..SolidWorks,80
+flare.vis.operator.layout..Microsoft Projects,20
+flare.vis.operator.layout..Ladder Programming,75
