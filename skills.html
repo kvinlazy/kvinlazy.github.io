@@ -54,98 +54,144 @@
         </div>
     </section>
 
+    <br>
+    <br>
+
+    <div class="col s12 m12">
+        <footer class="page-footer" style="background-color: #5c6bc0;">
+            <!--
+            <div class="container" > 
+                <div class="row">
+                    
+                        <div class="col l6 s12">
+                            <h5 class="white-text">Footer Content</h5>
+                            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                        </div>
+
+                    
+                        <div class="col l4 offset-l2 s12">
+                            <h5 class="white-text">Links</h5>
+                            <ul>
+                                <li><a class="grey-text text-lighten-3" href="#!">Github</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">LinkedIn</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">Google+</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">Facebook</a></li>
+                            </ul>
+                        </div>
+
+                </div>
+            </div>
+-->
+            <div class="footer-copyright" style="background-color: #5c6bc0;">
+                <div class="container">
+                    © 2017 Kevin Naik
+                    <a class="grey-text text-lighten-4 right" href="mailto:kevinnaik@gmail.com"><span><i class="tiny material-icons">mail</i></span>  kevinnaik@gmail.com</a>
+                </div>
+            </div>
+        </footer>
+    </div>
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.js"></script>
     <script src="js/init.js"></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script>
-        var svg = d3.select("svg"),
-            width = +svg.attr("width"),
-            height = +svg.attr("height");
 
-        var format = d3.format(",d");
+</body>
 
-        var color = d3.scaleOrdinal(d3.schemeCategory20c);
+</html>
 
-        var pack = d3.pack()
-            .size([width, height])
-            .padding(1.5);
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+    var svg = d3.select("svg"),
+        width = +svg.attr("width"),
+        height = +svg.attr("height");
 
-        d3.csv("flar.csv", function(d) {
-            d.value = +d.value;
-            if (d.value) return d;
-        }, function(error, classes) {
-            if (error) throw error;
+    var format = d3.format(",d");
 
-            var root = d3.hierarchy({
-                    children: classes
-                })
-                .sum(function(d) {
-                    return d.value;
-                })
-                .each(function(d) {
-                    if (id = d.data.id) {
-                        var id, i = id.lastIndexOf(".");
-                        d.id = id;
-                        d.package = id.slice(0, i);
-                        d.class = id.slice(i + 1);
-                    }
-                });
+    var color = d3.scaleOrdinal(d3.schemeCategory20c);
 
-            var node = svg.selectAll(".node")
-                .data(pack(root).leaves())
-                .enter().append("g")
-                .attr("class", "node")
-                .attr("transform", function(d) {
-                    return "translate(" + d.x + "," + d.y + ")";
-                });
+    var pack = d3.pack()
+        .size([width, height])
+        .padding(1.5);
 
-            node.append("circle")
-                .attr("id", function(d) {
-                    return d.id;
-                })
-                .attr("r", function(d) {
-                    return d.r;
-                })
-                .style("fill", function(d) {
-                    return color(d.package);
-                });
+    d3.csv("flar.csv", function(d) {
+        d.value = +d.value;
+        if (d.value) return d;
+    }, function(error, classes) {
+        if (error) throw error;
 
-            node.append("clipPath")
-                .attr("id", function(d) {
-                    return "clip-" + d.id;
-                })
-                .append("use")
-                .attr("xlink:href", function(d) {
-                    return "#" + d.id;
-                });
+        var root = d3.hierarchy({
+                children: classes
+            })
+            .sum(function(d) {
+                return d.value;
+            })
+            .each(function(d) {
+                if (id = d.data.id) {
+                    var id, i = id.lastIndexOf(".");
+                    d.id = id;
+                    d.package = id.slice(0, i);
+                    d.class = id.slice(i + 1);
+                }
+            });
 
-            node.append("text")
-                .attr("clip-path", function(d) {
-                    return "url(#clip-" + d.id + ")";
-                })
-                .selectAll("tspan")
-                .data(function(d) {
-                    return d.class.split(/(?=[A-Z][^A-Z])/g);
-                })
-                .enter().append("tspan")
-                .attr("x", 0)
-                .attr("y", function(d, i, nodes) {
-                    return 13 + (i - nodes.length / 2 - 0.5) * 10;
-                })
-                .text(function(d) {
-                    return d;
-                });
+        var node = svg.selectAll(".node")
+            .data(pack(root).leaves())
+            .enter().append("g")
+            .attr("class", "node")
+            .attr("transform", function(d) {
+                return "translate(" + d.x + "," + d.y + ")";
+            });
 
-            node.append("title")
-                .text(function(d) {
-                    return d.id + "\n" + format(d.value);
-                })
-                .style("font-size", "40px");
+        node.append("circle")
+            .attr("id", function(d) {
+                return d.id;
+            })
+            .attr("r", function(d) {
+                return d.r;
+            })
+            .style("fill", function(d) {
+                return color(d.package);
+            });
 
-        });
-    </script>
+        node.append("clipPath")
+            .attr("id", function(d) {
+                return "clip-" + d.id;
+            })
+            .append("use")
+            .attr("xlink:href", function(d) {
+                return "#" + d.id;
+            });
+
+        node.append("text")
+            .attr("clip-path", function(d) {
+                return "url(#clip-" + d.id + ")";
+            })
+            .selectAll("tspan")
+            .data(function(d) {
+                return d.class.split(/(?=[A-Z][^A-Z])/g);
+            })
+            .enter().append("tspan")
+            .attr("x", 0)
+            .attr("y", function(d, i, nodes) {
+                return 13 + (i - nodes.length / 2 - 0.5) * 10;
+            })
+            .text(function(d) {
+                return d;
+            });
+
+        node.append("title")
+            .text(function(d) {
+                return d.id + "\n" + format(d.value);
+            })
+            .style("font-size", "40px");
+
+    });
+</script>
+
 
 </body>
 
